@@ -1,0 +1,1 @@
+nexe -i index.js -r 6.7.0 -p C:\Python27\dlls -o test.exe

@@ -1,0 +1,37 @@
+{
+  "name": "axacharger",
+  "version": "1.0.0",
+  "description": "Axapro terminal recharger",
+  "scripts": {
+    "debug": "gulp",
+    "lint": "tslint ./src/app/**/*.ts -t verbose",
+    "tslint": "tslint -c tslint.json src/app/**/*.ts",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "app": "nw ./charger.nw",
+    "appx": "nw --mixed-context ./charger",
+    "app2": "cls && nw C:\\Projekty\\evoucher\\axacharger\\install\\charger\\win64\\charger.nw",
+    "test": "cls && concurrently \"node test/server \"  \"nw ./charger \" ",
+    "srv": "cls && node test/server",
+    "build": "nwbuild -v 0.21.3 --platforms win64 --buildDir install/ charger/ ",
+    "rbuild1": "nw-gyp configure --target=0.21.3",
+    "rbuild2": "nw-gyp build",
+    "bin": "nwjc charger  /src/app/main.js main.bin",
+    "atest": "cls & node test/axapro"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^7.0.12",
+    "async-mutex": "^0.1.1",
+    "colors": "^1.1.2",
+    "concurrently": "^3.4.0",
+    "express": "^4.15.2",
+    "hex": "^0.1.0",
+    "http-observable": "^0.1.0",
+    "node-key-sender": "^1.0.9",
+    "nodemailer": "^4.0.1",
+    "rxjs": "^5.4.0",
+    "tcpspy": "^0.1.3",
+    "watch": "^1.0.2"
+  }
+}

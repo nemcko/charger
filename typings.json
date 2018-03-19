@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "hlsjs": "file:./typings/hlsjs.d.ts"
+  }
+}

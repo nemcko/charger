@@ -1,0 +1,34 @@
+{
+  "name": "charger",
+  "version": "1.0.0",
+  "description": "Credit recharger terminal",
+  "main": "index.html",
+  "@node-main": "modules/main.js",
+  "node-remote": [ "*://*/*" ],
+  "window": {
+    "frame": true,
+    "show": false,
+    "toolbar": false,
+    "min_width": 636,
+    "min_height": 530,
+    "icon": "assets/logo.png",
+    "resizable": false
+  },
+  "webkit": {
+    "plugin": true,
+    "java": true,
+    "page-cache": false
+  },
+  "webview": {
+    "partitions": [
+      {
+        "name": "trusted",
+        "accessible_resources": [ "*://*/*" ]
+      }
+    ]
+  },
+  "chromium-args": "--mixed-context",
+  "@chromium-args": "--mixed-context --enable-logging=stderr",
+  "license": "ISC"
+
+}

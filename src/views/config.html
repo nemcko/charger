@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configuration</title>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: courier,fixed,swiss,sans-serif;
+            font-size: 12px;
+            overflow:hidden;
+            margin: 0px !important;
+        }
+
+        #editor {
+            width:100%;
+            height:100%;
+            border: hidden;
+        }
+    </style>
+
+
+</head>
+<body id="termDiv" class="term">
+    <textarea id="editor"></textarea>
+    <script>
+        var fs = require('fs')
+          , gui = require('nw.gui')
+          , Main = require('../modules/main')
+          , config = new Main.Config(gui)
+          , keyMapLoc = config.getFilename()
+          , editor = document.querySelector("#editor")
+        ;
+
+        var menu = new gui.Menu({ type: 'menubar' });
+
+        var submenu = new gui.Menu();
+        submenu.append(new gui.MenuItem({
+            label: 'Save',
+            click: function () {
+                config.save(editor.value);
+                load();
+            }
+        })),
+        submenu.append(new gui.MenuItem({
+            label: 'Restart',
+            click: function () {
+                window.opener.stop();
+                window.opener.start();
+            }
+        }));
+        submenu.append(new gui.MenuItem({ type: 'separator' }));
+        submenu.append(new gui.MenuItem({
+            label: 'Exit',
+            click: function () {
+                gui.Window.get().close(true); 
+            }
+        }));
+
+        menu.append(new gui.MenuItem({
+            label: 'Menu',
+            submenu: submenu
+        }));
+
+        gui.Window.get().menu = menu;
+
+        function load() {
+            editor.value = JSON.stringify(config.load(), null, 2);
+        }
+
+        load();
+    </script>
+</body>
+</html>
